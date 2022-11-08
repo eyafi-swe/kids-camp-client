@@ -10,7 +10,7 @@ const ServiceDetail = () => {
     const handleAddReview = event =>{
         event.preventDefault();
         console.log(review);
-        fetch('http://localhost:5000/reviews', {
+        fetch('https://kids-camp-server.vercel.app/reviews', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
