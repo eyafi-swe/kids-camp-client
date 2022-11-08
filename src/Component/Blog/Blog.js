@@ -16,7 +16,7 @@ const Blog = () => {
     return (
         <div className={`py-10`}>
             <h1 className='text-center text-3xl font-semibold'>Read The Weblogs Of KIDS CAMP</h1>
-            <p className='text-center text-xl'>Total Weblogs: {blogs.length}</p>
+            <p className='text-center text-xl text-gray-600'>Total Weblogs: {blogs.length}</p>
             <div className='grid lg:grid-cols-4 md:grid-cols-2 gap-10 mt-10 container mx-auto px-5'>
                 {
                     blogs.map(blog => <BlogCard key={blog._id} blog={blog} showDescription = {showDescription}></BlogCard>)

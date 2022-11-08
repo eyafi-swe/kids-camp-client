@@ -33,8 +33,8 @@ const Home = () => {
     }, [])
 
     return (
-        <div className='pb-20'>
-            <div className="carousel container mx-auto bg-sky-900 rounded-b-xl">
+        <div className='py-10'>
+            <div className="carousel container mx-auto bg-sky-900 rounded-xl">
                 <div id="slide1" className="carousel-item relative w-full">
                     <div className='flex md:flex-row flex-col items-center justify-center md:py-10  bg-sky-900  px-10'>
                         <div className='mt-10'>
