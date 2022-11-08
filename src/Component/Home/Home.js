@@ -98,7 +98,7 @@ const Home = () => {
                 isLoading ?
                     <div className='flex justify-center mt-20'><button className="btn loading">loading</button></div>
                     :
-                    <div className='grid lg:grid-cols-3 md:grid-cols-2 gap-5 container mx-auto mt-10'>
+                    <div className='grid lg:grid-cols-3 md:grid-cols-2 gap-5 container mx-auto mt-10 px-5 '>
                         {
                             services.map(service => <ServiceCard key={service._id} service={service}></ServiceCard>)
                         }
@@ -116,7 +116,7 @@ const Home = () => {
                 isLoading ?
                     <div className='flex justify-center mt-20'><button className="btn loading">loading</button></div>
                     :
-                    <div className='grid md:grid-cols-3  gap-5 container mx-auto mt-10'>
+                    <div className='grid md:grid-cols-3  gap-5 container mx-auto mt-10 px-5'>
                         {
                             blogs.map(blog => <BlogCard key={blog._id} blog={blog}><Link to='/weblog' className='btn border-none text-white mr-3 mb-3 bg-cyan-500'>READ MORE</Link></BlogCard>)
                         }

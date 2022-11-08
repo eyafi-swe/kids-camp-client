@@ -6,7 +6,7 @@ const ServiceCard = (props) => {
     const { _id,title, image, fee, rating, description } = props.service;
     return (
         <div>
-            <div className="card card-compact w-96 bg-base-100 shadow-xl">
+            <div className="card card-compact  bg-base-100 shadow-xl">
                 <figure className='cursor-pointer'>
                     <PhotoProvider>
                         <PhotoView src={image}>
