@@ -25,8 +25,8 @@ const Header = () => {
                     </label>
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-gradient-to-r from-cyan-500 to-blue-500  rounded-box w-52">
                         <li><Link to='/'>Home</Link></li>
-                        <li><Link to='services'>Services</Link></li>
-                        <li><Link to='blog'>Blog</Link></li>
+                        <li><Link to='/services'>Services</Link></li>
+                        <li><Link to='/weblog'>Weblog</Link></li>
                         {
                         user?.uid ?
                             <>
@@ -37,7 +37,7 @@ const Header = () => {
                             :
                             <>
                                 <li><Link to='/signup' >Sign Up</Link></li>
-                                <li><Link to='signin' >Sign In</Link></li>
+                                <li><Link to='/signin' >Sign In</Link></li>
 
                             </>
                     }
@@ -48,8 +48,8 @@ const Header = () => {
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
                     <li><Link to='/' className={`${location.pathname === '/' ? 'border-b-2' : ''}`}>Home</Link></li>
-                    <li><Link to='services' className={`${location.pathname === '/services' ? 'border-b-2' : ''}`}>Services</Link></li>
-                    <li><Link to='blog' className={`${location.pathname === '/blog' ? 'border-b-2' : ''}`}>Blog</Link></li>
+                    <li><Link to='/services' className={`${location.pathname === '/services' ? 'border-b-2' : ''}`}>Services</Link></li>
+                    <li><Link to='/weblog' className={`${location.pathname === '/weblog' ? 'border-b-2' : ''}`}>Weblog</Link></li>
 
                     {
                         user?.uid ?
@@ -61,7 +61,7 @@ const Header = () => {
                             :
                             <>
                                 <li><Link to='/signup' className={`${location.pathname === '/signup' ? 'border-b-2' : ''}`}>Sign Up</Link></li>
-                                <li><Link to='signin' className={`${location.pathname === '/signin' ? 'border-b-2' : ''}`}>Sign In</Link></li>
+                                <li><Link to='/signin' className={`${location.pathname === '/signin' ? 'border-b-2' : ''}`}>Sign In</Link></li>
 
                             </>
                     }

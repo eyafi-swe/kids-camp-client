@@ -5,15 +5,31 @@ import slide2 from '../../Assets/slide2.png';
 import slide3 from '../../Assets/slide3.png';
 import { Link } from 'react-router-dom';
 import ServiceCard from '../ServiceCard/ServiceCard';
+import BlogCard from '../Blog/BlogCard';
 const Home = () => {
 
     const [services, setServices] = useState([]);
+    const [isLoading, setLoading] = useState(true);
+    const [blogs,setBlogs] = useState([]);
     useTitle('KidsCamp');
 
     useEffect(() => {
         fetch(`https://kids-camp-server.vercel.app/services?size=3`)
             .then(response => response.json())
-            .then(data => setServices(data))
+            .then(data => {
+                setServices(data);
+                setLoading(false)
+            })
+    }, [])
+
+    useEffect(() => {
+        setLoading(true);
+        fetch('https://kids-camp-server.vercel.app/blog')
+            .then(response => response.json())
+            .then(data => {
+                setBlogs(data.slice(0,3));
+                setLoading(false)
+            })
     }, [])
 
     return (
@@ -25,7 +41,7 @@ const Home = () => {
                             <h1 className='text-4xl font-semibold text-white text-center'>ACTIVE TEACHING BY KIDS CAMP</h1>
                             <p className='text-white text-xl text-center mt-3'>The Foundation Needs To Be Strong and KIDS CAMP Takes Care Of Your Childrens' Education Foundation</p>
                             <div className="flex justify-center mt-10 mb-5">
-                                <Link to='/services' className='btn bg-sky-600 border-none normal-case text-xl'>SEE SERVICES</Link>
+                                <Link to='/services' className='btn bg-cyan-500 border-none normal-case text-xl'>SEE SERVICES</Link>
                             </div>
                         </div>
                         <div>
@@ -43,7 +59,7 @@ const Home = () => {
                             <h1 className='text-4xl font-semibold text-white text-center'>FUNDAMENTAL COMPUTER TRAINING BY KIDS CAMP</h1>
                             <p className='text-white text-xl text-center mt-3'>Teching The Fundamental, Necessity and Limitations Of Using Computer</p>
                             <div className="flex justify-center mt-10 mb-5">
-                                <Link to='/services' className='btn bg-sky-600 border-none normal-case text-xl'>SEE SERVICES</Link>
+                                <Link to='/services' className='btn bg-cyan-500 border-none normal-case text-xl'>SEE SERVICES</Link>
                             </div>
                         </div>
                         <div>
@@ -61,7 +77,7 @@ const Home = () => {
                             <h1 className='text-4xl font-semibold text-white text-center'>MUSIC TRAINING BY KIDS CAMP</h1>
                             <p className='text-white text-xl text-center mt-3'>Your Children Loves Music And KIDS CAMP Is Here To Make Your Childrens' Childhood Amazing With Music</p>
                             <div className="flex justify-center mt-10 mb-5">
-                                <Link to='/services' className='btn bg-sky-600 border-none normal-case text-xl'>SEE SERVICES</Link>
+                                <Link to='/services' className='btn bg-cyan-500 border-none normal-case text-xl'>SEE SERVICES</Link>
                             </div>
                         </div>
                         <div className=''>
@@ -75,14 +91,38 @@ const Home = () => {
                 </div>
 
             </div>
-            <div className='container mx-auto mt-20'>
+            <div className='container mx-auto mt-20 px-3'>
                 <h1 className='text-4xl font-bold mb-2'>My Services</h1><hr />
             </div>
-            <div className='grid grid-cols-3 gap-5 container mx-auto mt-10'>
-                {
-                    services.map(service => <ServiceCard key={service._id} service = {service}></ServiceCard>)
-                }
+            {
+                isLoading ?
+                    <div className='flex justify-center mt-20'><button className="btn loading">loading</button></div>
+                    :
+                    <div className='grid lg:grid-cols-3 md:grid-cols-2 gap-5 container mx-auto mt-10'>
+                        {
+                            services.map(service => <ServiceCard key={service._id} service={service}></ServiceCard>)
+                        }
+                    </div>
+
+            }
+            <div className='mt-10 flex justify-center'>
+                <Link to='/services' className='btn bg-cyan-500 border-none text-xl'>VIEW ALL</Link>
             </div>
+
+            <div className='mt-20 container mx-auto px-3'>
+                <h1 className='text-4xl font-bold mb-2'>Recent Weblogs</h1><hr />
+            </div>
+            {
+                isLoading ?
+                    <div className='flex justify-center mt-20'><button className="btn loading">loading</button></div>
+                    :
+                    <div className='grid md:grid-cols-3  gap-5 container mx-auto mt-10'>
+                        {
+                            blogs.map(blog => <BlogCard key={blog._id} blog={blog}><Link to='/weblog' className='btn border-none text-white mr-3 mb-3 bg-cyan-500'>READ MORE</Link></BlogCard>)
+                        }
+                    </div>
+
+            }
         </div>
     );
 };
