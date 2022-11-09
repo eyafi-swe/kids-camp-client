@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../../Assets/logo.ico'
 import { AuthContext } from '../../Context/UserContext';
-import { UserCircleIcon } from '@heroicons/react/24/solid'
+import { UserCircleIcon } from '@heroicons/react/24/solid';
 const Header = () => {
     const location = useLocation();
     const { user, logOut } = useContext(AuthContext);

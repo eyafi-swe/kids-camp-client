@@ -2,10 +2,9 @@ import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import loginpng from '../../Assets/signin.png';
 import google from '../../Assets/google.png';
-import github from '../../Assets/github.png';
 import { AuthContext } from '../../Context/UserContext';
 const Signin = () => {
-    const { userSignIn, googleSignIn, gitSignIn } = useContext(AuthContext);
+    const { userSignIn, googleSignIn } = useContext(AuthContext);
     const [error, setError] = useState('');
 
     const navigate = useNavigate();
@@ -50,23 +49,6 @@ const Signin = () => {
                 console.log(error);
             })
     }
-    const handleGitSignIn = () => {
-        gitSignIn()
-            .then(result => {
-                const user = result.user;
-                setError('');
-                console.log(user);
-                navigate(from, {replace:true});
-            })
-            .catch(error => {
-                const errormsg = error.message;
-                let errorSplit = errormsg.split(' ')
-                setError(errorSplit[2]);
-                console.log(error);
-            })
-    }
-
-
     return (
         <div className={`py-10 `}>
         <h1 className='text-center text-4xl font-bold '>Login To KidsCamp</h1>
@@ -103,9 +85,7 @@ const Signin = () => {
                             <button className='mr-5 bg-gray-300 hover:bg-sky-600 rounded-lg p-1 shadow-lg' onClick={handleGoogleSignIn}>
                                 <img src={google} alt="goggle" border="0" className='h-10' />
                             </button>
-                            <button className='bg-gray-300 hover:bg-sky-600 rounded-lg p-1 shadow-lg' onClick={handleGitSignIn}>
-                                <img src={github} alt="git" border="0" className='h-10' />
-                            </button>
+                            
                         </div>
                     </div>
                 </form>

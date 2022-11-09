@@ -1,13 +1,21 @@
-import React, { useContext, useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../Context/UserContext';
+import ReviewCard from './ReviewCard';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ServiceDetail = () => {
     const service = useLoaderData();
     const { user } = useContext(AuthContext);
     const { _id, title, image, fee, rating, description, method, tutor } = service;
-    const [review,setReview] = useState({});
-    const handleAddReview = event =>{
+    const [review, setReview] = useState({});
+    const [allReviews, setAllReviews] = useState([]);
+    const [isLoading, setLoading] = useState(true);
+
+    const notify = () => toast("Review Posted");
+
+    const handleAddReview = event => {
         event.preventDefault();
         console.log(review);
         fetch('https://kids-camp-server.vercel.app/reviews', {
@@ -19,11 +27,12 @@ const ServiceDetail = () => {
         })
             .then((response) => response.json())
             .then((data) => {
-                console.log('Success:', data);
-                if (data.acknowledged) {
-                    alert("Success");
-                    event.target.reset();
-                }
+                console.log('Success:', data.review);
+                const newShowenReviews = [...allReviews, data.review];
+                setAllReviews(newShowenReviews);
+                notify();
+                event.target.reset();
+                
             })
             .catch((error) => {
                 console.error('Error:', error);
@@ -35,15 +44,24 @@ const ServiceDetail = () => {
         const value = event.target.value;
         const service_id = _id;
         const user_email = user?.email;
+        const user_name = user?.displayName;
         const user_photoURL = user?.photoURL;
-        let newReview = {...review};
-        // newReview[field] = value;
-        newReview = {reviewText:value,service_id,user_email,user_photoURL};
+        let newReview = { ...review };
+        newReview = { reviewText: value, service_id, user_name, user_email, user_photoURL };
         setReview(newReview);
-        // const newUser = { ...users };
-        // newUser[field] = value;
-        // setUsers(newUser);
+
     }
+
+    useEffect(() => {
+        fetch(`https://kids-camp-server.vercel.app/reviews?service_id=${_id}`)
+            .then(response => response.json())
+            .then(data => {
+                setAllReviews(data);
+                setLoading(false)
+            })
+    }, [_id])
+
+    // console.log(allReviews);
 
     return (
         <div className='py-10 container mx-auto'>
@@ -62,6 +80,20 @@ const ServiceDetail = () => {
                 <div className=''>
                     <h1 className='mb-2 text-3xl font-semibold'>People's reviews about this service</h1><hr />
                     {
+                        isLoading ?
+                        <div className='flex justify-center mt-20'><button className="btn loading">loading</button></div>
+                        :
+                        <div>
+                        {
+                            allReviews.length ?
+                            allReviews.map(oneReview => <ReviewCard key={oneReview._id} oneReview={oneReview}></ReviewCard>)
+                            :
+                            <div className='text-xl font-semibold '>No Review yet!!</div>
+                        }
+                    </div>
+                    }
+                    
+                    {
                         user ?
                             <>
                                 <div className='mt-5'>
@@ -72,7 +104,9 @@ const ServiceDetail = () => {
                                 </div>
                             </>
                             :
-                            <>You need to login</>
+                            <div className='mt-5 text-xl font-semibold'>
+                                <p>Want to post a review? <Link to='/signin' className='text-red-500 underline'>Login Here!</Link> </p>
+                                </div>
                     }
                 </div>
             </div>
