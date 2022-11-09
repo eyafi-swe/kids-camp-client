@@ -30,7 +30,6 @@ const MyReviews = () => {
             .then(data => {
                 console.log(data)
                 const remaining = myReviews.filter(review => {
-                //     console.log('deleting: ', user.name);
                      return review._id !== id
                 })
                 setMyReviews(remaining);
