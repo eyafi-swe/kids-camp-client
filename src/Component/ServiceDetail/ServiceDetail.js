@@ -4,8 +4,10 @@ import { AuthContext } from '../../Context/UserContext';
 import ReviewCard from './ReviewCard';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import useTitle from '../../Hooks/useTitle';
 
 const ServiceDetail = () => {
+    useTitle('Service and Review|KidsCamp');
     const service = useLoaderData();
     const { user } = useContext(AuthContext);
     const { _id, title, image, fee, rating, description, method, tutor } = service;
@@ -43,11 +45,12 @@ const ServiceDetail = () => {
     const handleBlur = event => {
         const value = event.target.value;
         const service_id = _id;
+        const service_name = title;
         const user_email = user?.email;
         const user_name = user?.displayName;
         const user_photoURL = user?.photoURL;
         let newReview = { ...review };
-        newReview = { reviewText: value, service_id, user_name, user_email, user_photoURL };
+        newReview = { reviewText: value, service_id,service_name, user_name, user_email, user_photoURL };
         setReview(newReview);
 
     }
@@ -64,8 +67,8 @@ const ServiceDetail = () => {
     // console.log(allReviews);
 
     return (
-        <div className='py-10 container mx-auto'>
-            <div className='grid grid-cols-2 gap-10'>
+        <div className='py-10 container mx-auto px-5'>
+            <div className='grid lg:grid-cols-2 gap-10'>
                 <div className=''>
                     <h1 className='mb-2 text-3xl font-semibold'>Service Title: {title} for Kids</h1><hr />
                     <img src={image} alt="" className='mt-5 rounded-lg h-96 w-full' />

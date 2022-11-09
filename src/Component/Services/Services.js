@@ -1,10 +1,11 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
+import useTitle from '../../Hooks/useTitle';
 import ServiceCard from '../ServiceCard/ServiceCard';
 
 const Services = () => {
     const allServices = useLoaderData();
-
+    useTitle('Services|KidsCamp');
     return (
         <div className='py-10 container mx-auto'>
             <h1 className='text-center text-4xl font-bold '>My All Services</h1>

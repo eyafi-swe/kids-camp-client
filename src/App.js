@@ -9,6 +9,7 @@ import Services from './Component/Services/Services';
 import Signin from './Component/SignIn/Signin';
 import Signup from './Component/SignUp/Signup';
 import Main from './Layout/Main';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
 
 function App() {
   const router = createBrowserRouter([
@@ -45,7 +46,7 @@ function App() {
         },
         {
           path:'/myreviews',
-          element:<MyReviews></MyReviews>
+          element:<PrivateRoute><MyReviews></MyReviews></PrivateRoute>
         },
         {
           path:'/addservice',
