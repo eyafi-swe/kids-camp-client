@@ -8,3 +8,8 @@ https://kids-camp-ef82e.web.app/
 * User Can post review to any service.
 * User can delete his review post.
 * Some important blogs also available.
+## Used Technologies
+* React
+* Node.js
+* Express.js
+* MongoDB
