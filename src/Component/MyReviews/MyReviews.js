@@ -2,7 +2,8 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Context/UserContext';
 import useTitle from '../../Hooks/useTitle';
 import MyReviewCard from './MyReviewCard';
-
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const MyReviews = () => {
     useTitle('My Reviews|KidsCamp');
     const { user } = useContext(AuthContext);
@@ -18,6 +19,7 @@ const MyReviews = () => {
 
     }, [user?.email])
 
+    const notify = () => toast("Review Deleted!");
 
     const handleReviewDelete = (id) => {
         console.log(id);
@@ -32,7 +34,7 @@ const MyReviews = () => {
                      return review._id !== id
                 })
                 setMyReviews(remaining);
-
+                notify()
             }
             )
             .catch((error) => {
