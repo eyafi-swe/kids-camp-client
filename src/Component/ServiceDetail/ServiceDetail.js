@@ -101,7 +101,7 @@ const ServiceDetail = () => {
                             <>
                                 <div className='mt-5'>
                                     <form onSubmit={handleAddReview}>
-                                        <textarea className="textarea textarea-info focus:outline-none w-full" placeholder="Write A Review" name='reviewText' onBlur={handleBlur}></textarea>
+                                        <textarea className="textarea textarea-info focus:outline-none w-full" placeholder="Write A Review" name='reviewText' onBlur={handleBlur} required></textarea>
                                         <button className='btn bg-cyan-500 border-none mt-2'>Add Review</button>
                                     </form>
                                 </div>
