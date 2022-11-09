@@ -75,7 +75,7 @@ const ServiceDetail = () => {
                     <p className='mt-5 text-lg font-semibold text-gray-600'>Service Fee: {fee}</p>
                     <p className='text-lg font-semibold text-gray-600'>Service Method: {method}</p>
                     <p className='text-lg font-semibold text-gray-600'>Service Ratings: {rating} Star</p>
-                    <p className='text-lg font-semibold text-gray-600'>Service Tutor: {tutor}</p>
+                    <p className='text-lg font-semibold text-gray-600'>Service Provider: {tutor}</p>
                     <p className='text-lg'><span className='font-semibold'>About Service: </span> {description}</p>
 
                 </div>
