@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 import useTitle from '../../Hooks/useTitle';
-
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const AddService = () => {
 
     useTitle('Add Service|Kids')
     const [service,setService] = useState({});
 
+    const notify = () => toast("Service Added");
+
     const handleAddService = event => {
         event.preventDefault();
         console.log(service);
-        //http://localhost:5000/services
-        fetch('http://localhost:5000/services', {
+        fetch('https://kids-camp-server.vercel.app/services', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -20,9 +22,7 @@ const AddService = () => {
             .then((response) => response.json())
             .then((data) => {
                 console.log('Success:', data);
-                // const newShowenReviews = [...allReviews, data.review];
-                // setAllReviews(newShowenReviews);
-                // notify();
+                notify();
                 event.target.reset();
                 
             })

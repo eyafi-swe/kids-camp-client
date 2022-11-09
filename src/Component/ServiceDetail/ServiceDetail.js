@@ -70,7 +70,7 @@ const ServiceDetail = () => {
         <div className='py-10 container mx-auto px-5'>
             <div className='grid lg:grid-cols-2 gap-10'>
                 <div className=''>
-                    <h1 className='mb-2 text-3xl font-semibold'>Service Title: {title} for Kids</h1><hr />
+                    <h1 className='mb-2 text-3xl font-semibold'>Service Title: {title}</h1><hr />
                     <img src={image} alt="" className='mt-5 rounded-lg h-96 w-full' />
                     <p className='mt-5 text-lg font-semibold text-gray-600'>Service Fee: {fee}</p>
                     <p className='text-lg font-semibold text-gray-600'>Service Method: {method}</p>
