@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapPinIcon, EnvelopeIcon, PhoneIcon, LinkIcon } from '@heroicons/react/24/solid'
+import { MapPinIcon, EnvelopeIcon, PhoneIcon } from '@heroicons/react/24/solid'
 import { Link } from 'react-router-dom';
 const Footer = () => {
     return (
@@ -24,7 +24,7 @@ const Footer = () => {
                 </div>
             </div>
             <div className='text-white flex justify-center mt-5'>
-                <p>All Rightes Reserved | © KIDS CAMP 2022 </p>
+                <p>All Rightes Reserved | © KIDS CAMP 2022 & EyafiNeo </p>
             </div>
         </div>
     );
