@@ -120,7 +120,7 @@ const Home = () => {
                 <h1 className='text-4xl font-bold mb-2'>Speciality</h1><hr />
                 <div className='mt-10'>
                     <div className="flex flex-col w-full lg:flex-row">
-                        <div className="grid py-10  lg:w-1/2 card bg-base-300 rounded-box place-items-center">
+                        <div className="grid py-10  lg:w-1/2 card bg-cyan-500 rounded-box place-items-center">
                             <div className='flex'>
                                 <img src={rocket} alt="" className='h-16 mr-5' />
                                 <img src={service} alt="" className='h-16' />
@@ -128,7 +128,7 @@ const Home = () => {
                             <p className='text-xl font-semibold mt-0 text-center'>Very Fast Service Providing and Carefull To Consumers' Demand. Available For 24/7 </p>
                         </div>
                         <div className="divider lg:divider-horizontal font-semibold">AND</div>
-                        <div className="grid py-10 lg:w-1/2 card bg-base-300 rounded-box place-items-center">
+                        <div className="grid py-10 lg:w-1/2 card bg-cyan-500 rounded-box place-items-center">
                             <div className='flex'>
                             <img src={home} alt="" className='h-16 mr-5' />
                             <img src={satisfaction} alt="" className='h-16' />

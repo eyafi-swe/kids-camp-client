@@ -21,7 +21,7 @@ const AddService = () => {
         })
             .then((response) => response.json())
             .then((data) => {
-                console.log('Success:', data);
+                console.log('Success:');
                 notify();
                 event.target.reset();
                 
@@ -85,7 +85,7 @@ const AddService = () => {
                             <label className="label">
                                 <span className="label-text">Rating</span>
                             </label>
-                            <input onChange={hanldeValue} type="number" name='rating' placeholder="Average rating of service" className="input input-info input-bordered focus:outline-none" required />
+                            <input onChange={hanldeValue} type="text" name='rating' placeholder="Average rating of service" className="input input-info input-bordered focus:outline-none" required />
 
                         </div>
                         <div className="form-control">

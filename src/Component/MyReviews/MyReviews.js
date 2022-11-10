@@ -6,18 +6,27 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const MyReviews = () => {
     useTitle('My Reviews|KidsCamp');
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
     const [myReviews, setMyReviews] = useState([]);
     const [isLoading, setLoading] = useState(true);
     useEffect(() => {
-        fetch(`https://kids-camp-server.vercel.app/reviews?user_email=${user?.email}`)
-            .then(response => response.json())
+        fetch(`https://kids-camp-server.vercel.app/reviews?user_email=${user?.email}`, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('KidsCampToken')}`
+            }
+        })
+            .then(response => {
+                if (response.status === 401 || response.status === 403) {
+                    return logOut();
+                }
+                return response.json()
+            })
             .then(data => {
                 setMyReviews(data);
                 setLoading(false)
             })
 
-    }, [user?.email])
+    }, [user?.email,logOut])
 
     const notify = () => toast("Review Deleted!");
 
@@ -30,7 +39,7 @@ const MyReviews = () => {
             .then(data => {
                 console.log(data)
                 const remaining = myReviews.filter(review => {
-                     return review._id !== id
+                    return review._id !== id
                 })
                 setMyReviews(remaining);
                 notify()

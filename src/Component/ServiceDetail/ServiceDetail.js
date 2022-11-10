@@ -20,7 +20,7 @@ const ServiceDetail = () => {
     // Post review
     const handleAddReview = event => {
         event.preventDefault();
-        console.log(review);
+        // console.log(review);
         fetch('https://kids-camp-server.vercel.app/reviews', {
             method: 'POST',
             headers: {
@@ -30,12 +30,12 @@ const ServiceDetail = () => {
         })
             .then((response) => response.json())
             .then((data) => {
-                console.log('Success:', data.review);
+                console.log('Success');
                 const newShowenReviews = [...allReviews, data.review];
                 setAllReviews(newShowenReviews);
                 notify();
                 event.target.reset();
-                
+
             })
             .catch((error) => {
                 console.error('Error:', error);
@@ -51,14 +51,18 @@ const ServiceDetail = () => {
         const user_name = user?.displayName;
         const user_photoURL = user?.photoURL;
         let newReview = { ...review };
-        newReview = { reviewText: value, service_id,service_name, user_name, user_email, user_photoURL };
+        newReview = { reviewText: value, service_id, service_name, user_name, user_email, user_photoURL };
         setReview(newReview);
 
     }
 
     // Load reviews according to service
     useEffect(() => {
-        fetch(`https://kids-camp-server.vercel.app/reviews?service_id=${_id}`)
+        fetch(`https://kids-camp-server.vercel.app/reviews?service_id=${_id}`, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('KidsCampToken')}`
+            }
+        })
             .then(response => response.json())
             .then(data => {
                 setAllReviews(data);
@@ -86,18 +90,18 @@ const ServiceDetail = () => {
                     <h1 className='mb-2 text-3xl font-semibold'>People's reviews about this service</h1><hr />
                     {
                         isLoading ?
-                        <div className='flex justify-center mt-20'><button className="btn loading">loading</button></div>
-                        :
-                        <div>
-                        {
-                            allReviews.length ?
-                            allReviews.map(oneReview => <ReviewCard key={oneReview._id} oneReview={oneReview}></ReviewCard>)
+                            <div className='flex justify-center mt-20'><button className="btn loading">loading</button></div>
                             :
-                            <div className='text-xl font-semibold '>No Review yet!!</div>
-                        }
-                    </div>
+                            <div>
+                                {
+                                    allReviews.length ?
+                                        allReviews.map(oneReview => <ReviewCard key={oneReview._id} oneReview={oneReview}></ReviewCard>)
+                                        :
+                                        <div className='text-xl font-semibold '>No Review yet!!</div>
+                                }
+                            </div>
                     }
-                    
+
                     {
                         user ?
                             <>
@@ -111,7 +115,7 @@ const ServiceDetail = () => {
                             :
                             <div className='mt-5 text-xl font-semibold'>
                                 <p>Want to post a review? <Link to='/signin' className='text-red-500 underline'>Login Here!</Link> </p>
-                                </div>
+                            </div>
                     }
                 </div>
             </div>
