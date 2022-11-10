@@ -4,6 +4,7 @@ import AddService from './Component/AddService/AddService';
 import Blog from './Component/Blog/Blog';
 import Home from './Component/Home/Home';
 import MyReviews from './Component/MyReviews/MyReviews';
+import ReviewUpdate from './Component/ReviewUpdate/ReviewUpdate';
 import ServiceDetail from './Component/ServiceDetail/ServiceDetail';
 import Services from './Component/Services/Services';
 import Signin from './Component/SignIn/Signin';
@@ -46,6 +47,11 @@ function App() {
         {
           path:'/myreviews',
           element:<PrivateRoute><MyReviews></MyReviews></PrivateRoute>
+        },
+        {
+          path:'/myreviews/:id',
+          loader:({params})=> fetch(`https://kids-camp-server.vercel.app/reviews/${params.id}`),
+          element:<PrivateRoute><ReviewUpdate></ReviewUpdate></PrivateRoute>
         },
         {
           path:'/addservice',

@@ -78,11 +78,13 @@ const ServiceDetail = () => {
                 <div className=''>
                     <h1 className='mb-2 text-3xl font-semibold'>Service Title: {title}</h1><hr />
                     <img src={image} alt="" className='mt-5 rounded-lg h-96 w-full' />
-                    <p className='mt-5 text-lg font-semibold text-gray-600'>Service Fee: {fee}</p>
-                    <p className='text-lg font-semibold text-gray-600'>Service Method: {method}</p>
-                    <p className='text-lg font-semibold text-gray-600'>Service Ratings: {rating} Star</p>
-                    <p className='text-lg font-semibold text-gray-600'>Service Provider: {tutor}</p>
-                    <p className='text-lg'><span className='font-semibold'>About Service: </span> {description}</p>
+                    <div className='border rounded-lg p-3 bg-base-200'>
+                        <p className=' text-lg font-semibold text-gray-600'>Service Fee: {fee}</p>
+                        <p className='text-lg font-semibold text-gray-600'>Service Method: {method}</p>
+                        <p className='text-lg font-semibold text-gray-600'>Service Ratings: {rating} Star</p>
+                        <p className='text-lg font-semibold text-gray-600'>Service Provider: {tutor}</p>
+                        <p className='text-lg'><span className='font-semibold'>About Service: </span> {description}</p>
+                    </div>
 
                 </div>
 

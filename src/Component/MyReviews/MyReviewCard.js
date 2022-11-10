@@ -1,5 +1,6 @@
 import React from 'react';
 import { TrashIcon, PencilSquareIcon } from '@heroicons/react/24/solid'
+import { Link } from 'react-router-dom';
 const MyReviewCard = ({myReview,handleReviewDelete}) => {
     const { _id,reviewText, service_name } = myReview;
     
@@ -12,9 +13,7 @@ const MyReviewCard = ({myReview,handleReviewDelete}) => {
                 </div>
                 <div className='flex justify-center mb-2'>
                     <button className='bg-red-500 p-3 rounded-lg mr-5 shadow-lg shadow-red-500 cursor-pointer' onClick={()=>handleReviewDelete(_id)}><TrashIcon className='h-6 text-white'></TrashIcon></button>
-                    {/* onClick={()=>handleReviewDelete(_id)} */}
-
-                    <button className='bg-cyan-500 p-3 rounded-lg shadow-lg shadow-cyan-500'><PencilSquareIcon className='h-6 text-white'></PencilSquareIcon></button>
+                    <Link to={`/myreviews/${_id}`} className='bg-cyan-500 p-3 cursor-pointer rounded-lg shadow-lg shadow-cyan-500'><PencilSquareIcon className='h-6 text-white'></PencilSquareIcon></Link>
                 </div>
             </div>
 
