@@ -4,7 +4,7 @@ import loginpng from '../../Assets/signin.png';
 import google from '../../Assets/google.png';
 import { AuthContext } from '../../Context/UserContext';
 const Signin = () => {
-    const { userSignIn, googleSignIn } = useContext(AuthContext);
+    const { userSignIn, googleSignIn, loading } = useContext(AuthContext);
     const [error, setError] = useState('');
 
     const navigate = useNavigate();
@@ -77,7 +77,7 @@ const Signin = () => {
                     </div>
                     {error && <p className='text-red-600'>Error: {error}</p>}
                     <div className="form-control">
-                        <button className="btn bg-sky-600 border-none">Login</button>
+                        <button className={`btn bg-sky-600 border-none ${loading ? 'loading' : ''}`}>Login</button>
                     </div>
                     <div className='mt-0'>
                         <p className='text-center font-semibold text-xl'>Continue With</p>

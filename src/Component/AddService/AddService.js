@@ -31,6 +31,7 @@ const AddService = () => {
             });
     }
 
+    // Catching values from form
     const hanldeValue = event =>{
         const field = event.target.name;
         const value = event.target.value;

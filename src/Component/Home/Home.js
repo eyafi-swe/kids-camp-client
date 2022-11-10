@@ -6,13 +6,18 @@ import slide3 from '../../Assets/slide3.png';
 import { Link } from 'react-router-dom';
 import ServiceCard from '../ServiceCard/ServiceCard';
 import BlogCard from '../Blog/BlogCard';
+import rocket from '../../Assets/rocket.png'
+import home from '../../Assets/home.png'
+import service from '../../Assets/service.png'
+import satisfaction from '../../Assets/satisfaction.png'
 const Home = () => {
 
     const [services, setServices] = useState([]);
     const [isLoading, setLoading] = useState(true);
-    const [blogs,setBlogs] = useState([]);
+    const [blogs, setBlogs] = useState([]);
     useTitle('KidsCamp');
 
+    // Limited service load
     useEffect(() => {
         fetch(`https://kids-camp-server.vercel.app/services?size=3`)
             .then(response => response.json())
@@ -22,12 +27,13 @@ const Home = () => {
             })
     }, [])
 
+    // blogs for homepage and slicing 
     useEffect(() => {
         setLoading(true);
         fetch('https://kids-camp-server.vercel.app/blog')
             .then(response => response.json())
             .then(data => {
-                setBlogs(data.slice(0,3));
+                setBlogs(data.slice(0, 3));
                 setLoading(false)
             })
     }, [])
@@ -108,6 +114,33 @@ const Home = () => {
             <div className='mt-10 flex justify-center'>
                 <Link to='/services' className='btn bg-cyan-500 border-none text-xl'>VIEW ALL</Link>
             </div>
+
+
+            <div className='mt-20 container mx-auto px-3'>
+                <h1 className='text-4xl font-bold mb-2'>Speciality</h1><hr />
+                <div className='mt-10'>
+                    <div className="flex flex-col w-full lg:flex-row">
+                        <div className="grid py-10  lg:w-1/2 card bg-base-300 rounded-box place-items-center">
+                            <div className='flex'>
+                                <img src={rocket} alt="" className='h-16 mr-5' />
+                                <img src={service} alt="" className='h-16' />
+                            </div>
+                            <p className='text-xl font-semibold mt-0 text-center'>Very Fast Service Providing and Carefull To Consumers' Demand. Available For 24/7 </p>
+                        </div>
+                        <div className="divider lg:divider-horizontal font-semibold">AND</div>
+                        <div className="grid py-10 lg:w-1/2 card bg-base-300 rounded-box place-items-center">
+                            <div className='flex'>
+                            <img src={home} alt="" className='h-16 mr-5' />
+                            <img src={satisfaction} alt="" className='h-16' />
+                            </div>
+                            <p className='text-xl font-semibold mt-0 text-center'>Service Providing At Consumers' Home Or Provider's Place. In Both Place Service Satisfaction 100% Guaranteed</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
 
             <div className='mt-20 container mx-auto px-3'>
                 <h1 className='text-4xl font-bold mb-2'>Recent Weblogs</h1><hr />

@@ -17,6 +17,7 @@ const ServiceDetail = () => {
 
     const notify = () => toast("Review Posted");
 
+    // Post review
     const handleAddReview = event => {
         event.preventDefault();
         console.log(review);
@@ -55,6 +56,7 @@ const ServiceDetail = () => {
 
     }
 
+    // Load reviews according to service
     useEffect(() => {
         fetch(`https://kids-camp-server.vercel.app/reviews?service_id=${_id}`)
             .then(response => response.json())

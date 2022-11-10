@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import signuppng from '../../Assets/signin.png'
 import { AuthContext } from '../../Context/UserContext';
 const Signup = () => {
-    const { userSignUp, updateUserProfile } = useContext(AuthContext);
+    const { userSignUp, updateUserProfile, loading } = useContext(AuthContext);
     const [error, setError] = useState('');
     const navigate = useNavigate();
     const handleSignUp = event => {
@@ -84,7 +84,7 @@ const Signup = () => {
                         </div>
                         {error && <p className='text-red-600'>Error: {error}</p>}
                         <div className="form-control">
-                            <button className="btn bg-sky-600 border-none">Register</button>
+                            <button className={`btn bg-sky-600 border-none ${loading ? 'loading' : ''}`}>Register</button>
                         </div>
 
                     </form>

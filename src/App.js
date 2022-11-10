@@ -23,7 +23,6 @@ function App() {
         },
         {
           path:'/services',
-          loader:()=> fetch(`https://kids-camp-server.vercel.app/services`),
           element:<Services></Services>
         },
         {
