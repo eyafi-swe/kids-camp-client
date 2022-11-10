@@ -31,7 +31,7 @@ const ServiceDetail = () => {
             .then((response) => response.json())
             .then((data) => {
                 console.log('Success');
-                const newShowenReviews = [...allReviews, data.review];
+                const newShowenReviews = [data.review,...allReviews ];
                 setAllReviews(newShowenReviews);
                 notify();
                 event.target.reset();
