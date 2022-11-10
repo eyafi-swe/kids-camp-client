@@ -125,7 +125,7 @@ const Home = () => {
                                 <img src={rocket} alt="" className='h-16 mr-5' />
                                 <img src={service} alt="" className='h-16' />
                             </div>
-                            <p className='text-xl font-semibold mt-0 text-center'>Very Fast Service Providing and Carefull To Consumers' Demand. Available For 24/7 </p>
+                            <p className='text-xl font-semibold mt-0 text-center text-white'>Very Fast Service Providing and Carefull To Consumers' Demand. Available For 24/7 </p>
                         </div>
                         <div className="divider lg:divider-horizontal font-semibold">AND</div>
                         <div className="grid py-10 lg:w-1/2 card bg-cyan-500 rounded-box place-items-center">
@@ -133,7 +133,7 @@ const Home = () => {
                             <img src={home} alt="" className='h-16 mr-5' />
                             <img src={satisfaction} alt="" className='h-16' />
                             </div>
-                            <p className='text-xl font-semibold mt-0 text-center'>Service Providing At Consumers' Home Or Provider's Place. In Both Place Service Satisfaction 100% Guaranteed</p>
+                            <p className='text-xl font-semibold mt-0 text-center text-white'>Service Providing At Consumers' Home Or Provider's Place. In Both Place Service Satisfaction 100% Guaranteed</p>
                         </div>
                     </div>
                 </div>
