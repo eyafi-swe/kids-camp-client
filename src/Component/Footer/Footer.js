@@ -24,7 +24,7 @@ const Footer = () => {
                 </div>
             </div>
             <div className='text-white flex justify-center mt-5'>
-                <p>All Rightes Reserved | © KIDS CAMP 2022 & EyafiNeo </p>
+                <p className='text-center'>All Rightes Reserved | © KIDS CAMP 2022 & EyafiNeo </p>
             </div>
         </div>
     );
