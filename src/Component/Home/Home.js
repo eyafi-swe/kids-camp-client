@@ -40,9 +40,9 @@ const Home = () => {
 
     return (
         <div className='py-10'>
-            <div className="carousel container mx-auto bg-sky-900 rounded-xl">
+            <div className="carousel container mx-auto bg-gradient-to-r from-sky-900 to-cyan-500  rounded-xl">
                 <div id="slide1" className="carousel-item relative w-full">
-                    <div className='flex md:flex-row flex-col items-center justify-center md:py-10  bg-sky-900  px-10'>
+                    <div className='flex md:flex-row flex-col items-center justify-center md:py-10  bg-gradient-to-r from-sky-900 to-cyan-500  px-10'>
                         <div className='mt-10'>
                             <h1 className='text-4xl font-semibold text-white text-center'>ACTIVE TEACHING BY KIDS CAMP</h1>
                             <p className='text-white text-xl text-center mt-3'>The Foundation Needs To Be Strong and KIDS CAMP Takes Care Of Your Childrens' Education Foundation</p>
@@ -55,12 +55,12 @@ const Home = () => {
                         </div>
                     </div>
                     <div className="absolute flex  transform -translate-y-1/2 right-5 top-3/4">
-                        <a href="#slide3" className="btn btn-square bg-cyan-500 border-none mr-2">❮</a>
-                        <a href="#slide2" className="btn btn-square bg-cyan-500 border-none">❯</a>
+                        <a href="#slide3" className="btn btn-square bg-sky-900 border-none mr-2">❮</a>
+                        <a href="#slide2" className="btn btn-square bg-sky-900 border-none">❯</a>
                     </div>
                 </div>
                 <div id="slide2" className="carousel-item relative w-full">
-                    <div className='flex md:flex-row flex-col items-center justify-center md:py-10  bg-sky-900 w-full px-10'>
+                    <div className='flex md:flex-row flex-col items-center justify-center md:py-10  bg-gradient-to-r from-sky-900 to-cyan-500 w-full px-10'>
                         <div className='mt-10'>
                             <h1 className='text-4xl font-semibold text-white text-center'>FUNDAMENTAL COMPUTER TRAINING BY KIDS CAMP</h1>
                             <p className='text-white text-xl text-center mt-3'>Teching The Fundamental, Necessity and Limitations Of Using Computer</p>
@@ -73,12 +73,12 @@ const Home = () => {
                         </div>
                     </div>
                     <div className="absolute flex  transform -translate-y-1/2 right-5 top-3/4">
-                        <a href="#slide1" className="btn btn-square bg-cyan-500 border-none mr-2">❮</a>
-                        <a href="#slide3" className="btn btn-square bg-cyan-500 border-none">❯</a>
+                        <a href="#slide1" className="btn btn-square bg-sky-900 border-none mr-2">❮</a>
+                        <a href="#slide3" className="btn btn-square bg-sky-900 border-none">❯</a>
                     </div>
                 </div>
                 <div id="slide3" className="carousel-item relative w-full">
-                    <div className='flex md:flex-row flex-col items-center justify-center md:py-10  bg-sky-900 w-full px-10'>
+                    <div className='flex md:flex-row flex-col items-center justify-center md:py-10  bg-gradient-to-r from-sky-900 to-cyan-500 w-full px-10'>
                         <div className='mt-10'>
                             <h1 className='text-4xl font-semibold text-white text-center'>MUSIC TRAINING BY KIDS CAMP</h1>
                             <p className='text-white text-xl text-center mt-3'>Your Children Loves Music And KIDS CAMP Is Here To Make Your Childrens' Childhood Amazing With Music</p>
@@ -91,8 +91,8 @@ const Home = () => {
                         </div>
                     </div>
                     <div className="absolute flex  transform -translate-y-1/2 right-5 top-3/4">
-                        <a href="#slide2" className="btn btn-square bg-cyan-500 border-none mr-2">❮</a>
-                        <a href="#slide1" className="btn btn-square bg-cyan-500 border-none">❯</a>
+                        <a href="#slide2" className="btn btn-square bg-sky-900 border-none mr-2">❮</a>
+                        <a href="#slide1" className="btn btn-square bg-sky-900 border-none">❯</a>
                     </div>
                 </div>
 
@@ -120,7 +120,7 @@ const Home = () => {
                 <h1 className='text-4xl font-bold mb-2'>Speciality</h1><hr />
                 <div className='mt-10'>
                     <div className="flex flex-col w-full lg:flex-row">
-                        <div className="grid py-10  lg:w-1/2 card bg-cyan-500 rounded-box place-items-center">
+                        <div className="grid py-10  lg:w-1/2 card bg-gradient-to-r from-sky-900 to-cyan-500 rounded-box place-items-center">
                             <div className='flex'>
                                 <img src={rocket} alt="" className='h-16 mr-5' />
                                 <img src={service} alt="" className='h-16' />
@@ -128,7 +128,7 @@ const Home = () => {
                             <p className='text-xl font-semibold mt-0 text-center text-white'>Very Fast Service Providing and Carefull To Consumers' Demand. Available For 24/7 </p>
                         </div>
                         <div className="divider lg:divider-horizontal font-semibold">AND</div>
-                        <div className="grid py-10 lg:w-1/2 card bg-cyan-500 rounded-box place-items-center">
+                        <div className="grid py-10 lg:w-1/2 card bg-gradient-to-r from-sky-900 to-cyan-500 rounded-box place-items-center">
                             <div className='flex'>
                             <img src={home} alt="" className='h-16 mr-5' />
                             <img src={satisfaction} alt="" className='h-16' />
