@@ -14,9 +14,9 @@ const Footer = () => {
                 </div>
                 <div className='flex flex-col text-white'>
                     <h1 className='text-xl font-semibold mb-2 border-b'>Quick Links</h1>
-                    <Link to='/' className='flex items-center mb-2'><LinkIcon className='h-3 w-3' /> Home</Link>
-                    <Link to='/services' className='flex items-center mb-2'><LinkIcon className='h-3 w-3' /> Services</Link>
-                    <Link to='/weblog' className='flex items-center mb-2'><LinkIcon className='h-3 w-3' /> Weblog</Link>
+                    <Link to='/' className='flex items-center mb-2'>Home</Link>
+                    <Link to='/services' className='flex items-center mb-2'>Services</Link>
+                    <Link to='/weblog' className='flex items-center mb-2'>Weblog</Link>
                 </div>
                 <div>
                     <h1 className='text-xl font-semibold mb-2 border-b text-white'>We Accept</h1>
