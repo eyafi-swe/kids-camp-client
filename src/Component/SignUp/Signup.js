@@ -3,9 +3,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import signuppng from '../../Assets/signin.png'
 import { AuthContext } from '../../Context/UserContext';
 const Signup = () => {
-    const { userSignUp, updateUserProfile, loading } = useContext(AuthContext);
+    const { userSignUp, updateUserProfile } = useContext(AuthContext);
     const [error, setError] = useState('');
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(false);
     const handleSignUp = event => {
         event.preventDefault();
         const form = event.target;
@@ -13,21 +14,43 @@ const Signup = () => {
         const imageUrl = form.imageurl.value;
         const email = form.email.value;
         const password = form.password.value;
+        setLoading(true);
         console.log(name, imageUrl, email, password);
         userSignUp(email, password)
             .then(result => {
                 const user = result.user;
                 setError('');
                 handleUpdateUserProfile(name, imageUrl);
-                console.log(user);
+
+                setLoading(false);
+                const currentUser = {
+                    email: user.email
+                }
+                console.log(currentUser);
                 form.reset();
-                navigate('/');
+                fetch('https://kids-camp-server.vercel.app/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        localStorage.setItem('KidsCampToken', data.token);
+                        navigate('/');
+                    });
+
             })
             .catch(error => {
                 const errormsg = error.message;
                 let errorSplit = errormsg.split(' ')
-                setError(errorSplit[2]);
+                //let lastElement = arry[arry.length - 1];
+                let errorMessage = errorSplit[errorSplit.length - 1];
+                setError(errorMessage);
                 console.log(error.message);
+                setLoading(false);
             })
     }
 

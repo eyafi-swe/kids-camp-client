@@ -4,9 +4,9 @@ import loginpng from '../../Assets/signin.png';
 import google from '../../Assets/google.png';
 import { AuthContext } from '../../Context/UserContext';
 const Signin = () => {
-    const { userSignIn, googleSignIn, loading } = useContext(AuthContext);
+    const { userSignIn, googleSignIn } = useContext(AuthContext);
     const [error, setError] = useState('');
-
+    const [loading,setLoading] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -18,6 +18,7 @@ const Signin = () => {
         const email = form.email.value;
         const password = form.password.value;
         console.log(email, password);
+        setLoading(true);
         userSignIn(email, password)
             .then(result => {
                 const user = result.user;
@@ -25,7 +26,7 @@ const Signin = () => {
                 const currentUser = {
                     email: user.email
                 }
-
+                setLoading(false);
                 console.log(currentUser);
                 fetch('https://kids-camp-server.vercel.app/jwt', {
                     method: 'POST',
@@ -45,6 +46,7 @@ const Signin = () => {
                 const errormsg = error.message;
                 let errorSplit = errormsg.split(' ')
                 setError(errorSplit[2]);
+                setLoading(false);
                 console.log(error);
             })
     }
@@ -76,7 +78,8 @@ const Signin = () => {
             .catch(error => {
                 const errormsg = error.message;
                 let errorSplit = errormsg.split(' ')
-                setError(errorSplit[2]);
+                let errorMessage = errorSplit[errorSplit.length - 1];
+                setError(errorMessage);
                 console.log(error);
             })
     }
